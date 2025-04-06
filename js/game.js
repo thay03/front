@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'http://localhost:3000/api'; // Atualize para o URL correto da sua API
+    const apiUrl = 'https://laughing-orbit-jj9r7vrv7r4j3599g-3000.app.github.dev/api'; // Atualize para o URL correto da sua API
     const gameModal = document.getElementById('gameModal');
     const gameForm = document.getElementById('gameForm');
     const addGameBtn = document.getElementById('addGameBtn');
-    const modalTitleGame = document.getElementById('modalTitlePlantation');
+    const modalTitleGame = document.getElementById('modalTitleGame');
     let editGameId = null;
 
     // Função para carregar plantações

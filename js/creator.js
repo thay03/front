@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'http://localhost:3000/api'; // Atualize para sua API
+    const apiUrl = 'https://laughing-orbit-jj9r7vrv7r4j3599g-3000.app.github.dev/api'; // Atualize para sua API
     const creatorModal = document.getElementById('creatorModal');
     const creatorForm = document.getElementById('creatorForm');
-    const addCreatorBtn = document.getElementById('addcCeatorBtn');
+    const addCreatorBtn = document.getElementById('addCreatorBtn');
     const modalTitle = document.getElementById('modalTitle');
     let editCreatorId = null;
 
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(creator)
         });
-        loadUsers();
+        loadCreators();
     };
 
     // Função para atualizar usuário
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             },
             body: JSON.stringify(creator)
         });
-        loadUsers();
+        loadCreators();
     };
 
     // Função para deletar usuário
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         await fetch(`${apiUrl}/creators/${id}`, {
             method: 'DELETE'
         });
-        loadUsers();
+        loadCreators();
     };
 
     // Abrir modal para editar usuário
@@ -77,19 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const response = await fetch(`${apiUrl}/creators/${id}`);
         const creator = await response.json();
 
-        document.getElementById('name').value = user.name;
-        document.getElementById('profile').value = user.profile;
+        document.getElementById('name').value = creator.name;
+        document.getElementById('profile').value = creator.profile;
         document.getElementById('password').value = ''; // Não exibir senha
 
-        userModal.style.display = 'block';
+        creatorModal.style.display = 'block';
     };
 
     // Abrir modal para adicionar novo usuário
     const openAddCreatorModal = () => {
-        editUserId = null;
+        editCreatorId = null;
         modalTitle.innerText = 'Adicionar Criador';
-        userForm.reset();
-        userModal.style.display = 'block';
+        creatorForm.reset();
+        creatorModal.style.display = 'block';
     };
 
     // Fechar modal ao clicar no "x"
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Fechar modal ao clicar fora dele
     window.addEventListener('click', (event) => {
-        if (event.target === userModal) {
+        if (event.target === creatorModal) {
             creatorModal.style.display = 'none';
         }
     });
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             password: document.getElementById('password').value
         };
 
-        if (editUserId) {
+        if (editCreatorId) {
             await updateCreator(editCreatorId, creatorData);
         } else {
             await addCreator(creatorData);
