@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'https://laughing-orbit-jj9r7vrv7r4j3599g-3000.app.github.dev/api'; // Atualize para o URL correto da sua API
+    const apiUrl = 'http://localhost:3000/api';
     const gameModal = document.getElementById('gameModal');
     const gameForm = document.getElementById('gameForm');
     const addGameBtn = document.getElementById('addGameBtn');
@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para carregar plantações
     const loadGames = async () => {
-        const response = await fetch(`${apiUrl}/games`);
+        const response = await fetch(`${apiUrl}/creators`);
         const games = await response.json();
         const tableBody = document.querySelector('#gamesTable tbody');
         tableBody.innerHTML = '';
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Abrir modal para editar plantação
     const openEditGameModal = async (id) => {
         editGameId = id;
-        modalTitleGame.innerText = 'Adicionar Jogo';
+        modalTitleGame.innerText = 'Editar Jogo';
 
         // Buscar os dados da plantação para preencher o modal
         const response = await fetch(`${apiUrl}/games/${id}`);

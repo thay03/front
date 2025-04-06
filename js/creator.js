@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = 'https://laughing-orbit-jj9r7vrv7r4j3599g-3000.app.github.dev/api'; // Atualize para sua API
+    const apiUrl = 'http://localhost:3000/api';
     const creatorModal = document.getElementById('creatorModal');
     const creatorForm = document.getElementById('creatorForm');
     const addCreatorBtn = document.getElementById('addCreatorBtn');
@@ -28,11 +28,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Adicionar eventos de edição e deleção
         document.querySelectorAll('.editCreatorBtn').forEach(button => {
-            button.addEventListener('click', (e) => openEditUserModal(e.target.dataset.id));
+            button.addEventListener('click', (e) => openEditCreatorModal(e.target.dataset.id));
         });
 
         document.querySelectorAll('.deleteCreatorBtn').forEach(button => {
-            button.addEventListener('click', (e) => deleteUser(e.target.dataset.id));
+            button.addEventListener('click', (e) => deleteCreator(e.target.dataset.id));
         });
     };
 
