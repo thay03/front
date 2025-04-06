@@ -13,7 +13,7 @@
     </nav>
 
     <h1>Criadores Cadastrados</h1>
-    <button id="addCreatorBtn">Adicionar Usuário</button>
+    <button id="addCreatorBtn">Adicionar novo criador</button>
 
     <table id="creatorsTable">
         <thead>
@@ -32,15 +32,15 @@
     <div id="creatorModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 id="modalTitle">Adicionar Usuário</h2>
+            <h2 id="modalTitle">Adicionar Criador</h2>
             <form id="creatorForm">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
 
                 <label for="profile">Perfil:</label>
                 <select id="profile" name="profile" required>
-                    <option value="admin">Game Master </option>
-                    <option value="user">Criador</option>
+                    <option value="game-master">Game Master </option>
+                    <option value="creator">Criador</option>
                 </select>
 
                 <label for="password">Senha:</label>
