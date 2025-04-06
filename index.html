@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Criadores</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Criadores</a>
+        <a href="plantations.html">Jogos</a>
+    </nav>
+
+    <h1>Criadores Cadastrados</h1>
+    <button id="addCreatorBtn">Adicionar Usuário</button>
+
+    <table id="creatorsTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Perfil</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os usuários serão listados aqui via JS -->
+        </tbody>
+    </table>
+
+    <!-- Modal para adicionar/editar usuário -->
+    <div id="creatorModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Adicionar Usuário</h2>
+            <form id="creatorForm">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="profile">Perfil:</label>
+                <select id="profile" name="profile" required>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+
+                <button type="submit" id="saveCreatorBtn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/creator.js"></script>
+</body>
+</html>

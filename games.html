@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Plantações</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Usuários</a>
+        <a href="plantations.html">Plantações</a>
+    </nav>
+
+    <h1>Plantações Cadastradas</h1>
+    <button id="addGameBtn">Adicionar Plantação</button>
+
+    <table id="gamesTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Responsável</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- As plantações serão listadas aqui via JS -->
+        </tbody>
+    </table>
+
+    <!-- Modal para adicionar/editar jogo -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitleGame">Adicionar Jogo</h2>
+            <form id="gameForm">
+                <label for="nameGame">Nome:</label>
+                <input type="text" id="nameGame" name="name" required>
+
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" name="description" required>
+
+                <label for="responsible">Responsável:</label>
+                <select id="responsible" name="responsible" required>
+                    <!-- Os usuários serão carregados aqui via JS -->
+                </select>
+
+                <button type="submit" id="saveGameBtn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
