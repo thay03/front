@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <td>${creator.profile}</td>
                 <td>
                     <button class="editCreatorBtn" data-id="${creator._id}">Editar</button>
-                    <button class="deletecreatorBtn" data-id="${creator._id}">Deletar</button>
+                    <button class="deleteCreatorBtn" data-id="${creator._id}">Deletar</button>
                 </td>
             `;
             tableBody.appendChild(row);
