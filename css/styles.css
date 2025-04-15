@@ -2,6 +2,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    height: 100vh;
+    background-image: linear-gradient(#4cd1a9 , #2a7375);
 }
 
 h1 {
@@ -13,6 +15,7 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    color: #ddd;
 }
 
 table, th, td {
