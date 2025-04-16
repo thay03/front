@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // Função para adicionar plantação
+    // Função para adicionar jogo
     const addGame = async (game) => {
         await fetch(`${apiUrl}/games`, {
             method: 'POST',
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadGames();
     };
 
-    // Função para atualizar plantação
+    // Função para atualizar jogo
     const updateGame = async (id, game) => {
         await fetch(`${apiUrl}/games/${id}`, {
             method: 'PUT',
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loadGames();
     };
 
-    // Função para deletar plantação
+    // Função para deletar 
     const deleteGame = async (id) => {
         await fetch(`${apiUrl}/games/${id}`, {
             method: 'DELETE'
@@ -69,15 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
         loadGames();
     };
 
-    // Abrir modal para editar plantação
+    // Abrir modal para editar 
     const openEditGameModal = async (id) => {
         editGameId = id;
         modalTitleGame.innerText = 'Editar Jogo';
 
-        // Buscar os dados da plantação para preencher o modal
+        // Buscar os dados para preencher o modal
         const response = await fetch(`${apiUrl}/games/${id}`);
         if (response.status === 404) {
-            console.error('Plantação não encontrada');
+            console.error('Jogo não encontrada');
             return;
         }
         const game = await response.json();
@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gameModal.style.display = 'block';
     };
 
-    // Abrir modal para adicionar nova plantação
+    // Abrir modal para adicionar nova jogo
     const openAddGameModal = async () => {
         editGameId = null;
         modalTitleGame.innerText = 'Adicionar Plantação';
