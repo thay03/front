@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Função para carregar plantações
     const loadGames = async () => {
-        const response = await fetch(`${apiUrl}/creators`);
+        const response = await fetch(`${apiUrl}/games`);
         const games = await response.json();
         const tableBody = document.querySelector('#gamesTable tbody');
         tableBody.innerHTML = '';
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('nameGame').value = game.name;
         document.getElementById('description').value = game.description;
-        await loadUsers(game.responsible ? game.responsible._id : null);
+        await loadcreators(game.responsible ? game.responsible._id : null);
 
         gameModal.style.display = 'block';
     };
@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Abrir modal para adicionar nova jogo
     const openAddGameModal = async () => {
         editGameId = null;
-        modalTitleGame.innerText = 'Adicionar Plantação';
+        modalTitleGame.innerText = 'Adicionar Jogo';
         gameForm.reset();
-        await loadUsers(); // Carrega os usuários sem pré-selecionar nenhum
+        await loadcreators(); // Carrega os usuários sem pré-selecionar nenhum
         gameModal.style.display = 'block';
     };
-
-    // Carregar usuários para o select de responsável
-    const loadUsers = async (selectedUserId = null) => {
+// Carregar usuários para o select de responsável
+const loadcreators = async (selectedUserId = null) => {
+    try {
         const response = await fetch(`${apiUrl}/users`);
         const users = await response.json();
         const select = document.getElementById('responsible');
@@ -108,35 +108,40 @@ document.addEventListener('DOMContentLoaded', () => {
         users.forEach(user => {
             const option = document.createElement('option');
             option.value = user._id;
-            option.text = user.name;
+            option.textContent = user.name;
             if (user._id === selectedUserId) {
                 option.selected = true;
             }
             select.appendChild(option);
         });
+    } catch (error) {
+        console.error('Erro ao carregar criadores:', error);
+    }
+};
+
+// Fechar modal ao clicar no "x"
+document.querySelector('.close').addEventListener('click', () => {
+    gameModal.style.display = 'none';
+});
+
+// Fechar modal ao clicar fora dele
+window.addEventListener('click', (event) => {
+    if (event.target === gameModal) {
+        gameModal.style.display = 'none';
+    }
+});
+
+// Submissão do formulário
+gameForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const gameData = {
+        name: document.getElementById('nameGame').value,
+        description: document.getElementById('description').value,
+        responsible: document.getElementById('responsible').value
     };
 
-    // Fechar modal ao clicar no "x"
-    document.querySelector('.close').addEventListener('click', () => {
-       gameModal.style.display = 'none';
-    });
-
-    // Fechar modal ao clicar fora dele
-    window.addEventListener('click', (event) => {
-        if (event.target === gameModal) {
-            gameModal.style.display = 'none';
-        }
-    });
-
-    // Submissão do formulário
-    gameForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const gameData = {
-            name: document.getElementById('nameGame').value,
-            description: document.getElementById('description').value,
-            responsible: document.getElementById('responsible').value
-        };
-
+    try {
         if (editGameId) {
             await updateGame(editGameId, gameData);
         } else {
@@ -145,9 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         gameModal.style.display = 'none';
         loadGames();
-    });
+    } catch (error) {
+        console.error('Erro ao salvar jogo:', error);
+    }
+});
 
-    // Inicializando o carregamento de plantações e eventos
-    addGameBtn.addEventListener('click', openAddGameModal);
-    loadGames();
+// Inicialização dos eventos e carregamento dos dados
+addGameBtn.addEventListener('click', openAddGameModal);
+loadGames();
 });
