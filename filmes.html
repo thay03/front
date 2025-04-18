@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Filmes</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Diretores</a>
+        <a href="filmes.html">Filmes</a>
+    </nav>
+
+    <h1> Filmes Cadastrados</h1>
+    <button id="addFilmBtn">Adicionar novo filme </button>
+
+    <table id="filmsTable">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Diretor</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Os filemes serão listadas aqui via JS -->
+        </tbody>
+    </table>
+
+    <!-- Modal para adicionar/editar Filme-->
+    <div id="filmModal" class="modal">
+        <div class="modal-content">
+            <span class="close-film">&times;</span>
+            <h2 id="modalTitleFilm">Adicionar Filme</h2>
+            <form id="filmForm">
+                <label for="title">Título:</label>
+                <input type="text" id="title" name="title" required>
+
+                <label for="description">Descrição:</label>
+                <input type="text" id="description" name="description" required>
+
+                <label for="director">Diretor:</label>
+                <select id="director" name="director" required>
+                    <!-- Os diretores serão carregados aqui via JS -->
+                </select>
+
+                <button type="submit" id="saveFilmBtn">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/fiml.js"></script>
+</body>
+</html>

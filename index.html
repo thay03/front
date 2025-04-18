@@ -3,54 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de Criadores</title>
+    <title>Gerenciamento de Diretores</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <nav class="navbar">
-        <a href="index.html">Criadores</a>
-        <a href="games.html">Jogos</a>
+        <a href="index.html">Diretores</a>
+        <a href="filmes.html">Filmes</a>
     </nav>
 
-    <h1>Criadores Cadastrados</h1>
-    <button id="addCreatorBtn">Adicionar novo criador</button>
+    <h1> Diretores Cadastrados</h1>
+    <button id="addDirectorBtn">Adicionar novo Diretor</button>
 
-    <table id="creatorsTable">
+    <table id="directorsTable">
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Perfil</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Os usuários serão listados aqui via JS -->
+            <!-- Os directors serão listados aqui via JS -->
         </tbody>
     </table>
 
-    <!-- Modal para adicionar/editar usuário -->
-    <div id="creatorModal" class="modal">
+    <!-- Modal  -->
+    <div id="directorModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modalTitle">Adicionar Criador</h2>
-            <form id="creatorForm">
+            <span class="close-director">&times;</span>
+            <h2 id="modalTitle">Adicionar Diretor</h2>
+            <form id="directorForm">
                 <label for="name">Nome:</label>
                 <input type="text" id="name" name="name" required>
 
                 <label for="profile">Perfil:</label>
                 <select id="profile" name="profile" required>
-                    <option value="game-master">Game Master </option>
-                    <option value="creator">Criador</option>
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
                 </select>
 
-                <label for="password">Senha:</label>
-                <input type="password" id="password" name="password" required>
-
-                <button type="submit" id="saveCreatorBtn">Salvar</button>
+                <button type="submit" id="saveDirectorBtn">Salvar</button>
             </form>
         </div>
     </div>
 
-    <script src="js/creator.js"></script>
+    <script src="js/director.js"></script>
 </body>
 </html>
